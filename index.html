@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+        <button class="trig-func" id="sin" onclick="trig('sin')">sin(x)</button>
+        <button  class="trig-func" id="cos" onclick="trig('cos')">cos(x)</button>
+        <button  class="trig-func" id="tan" onclick="trig('tan')">tan(x)</button>
+        <button id="add-graph" onclick="addFunc()">Add Graph</button>
+        <div id="wrapper">
+            <div class="func-box">        
+                <label>f(x) =</label>
+                <input class="func" type="text" name="function">
+            </div>
+        </div>
+
+        <button id="graph" type="button" onclick="graph()">Graph It</button>
+    <canvas id="canvas"></canvas>
+    <script src="index.js"></script>
+</body>
+</html>
