@@ -2,6 +2,8 @@ let canvas=document.getElementById("canvas");
 let ctx= canvas.getContext("2d");
 
 let funcInput=document.getElementsByClassName("func");
+let colorPicker=document.getElementsByClassName("color-picker");
+let colorbtn=document.getElementsByClassName("colorbtn");
 let sinbtn=document.getElementById("sin");
 let cosbtn=document.getElementById("cos");
 let tanbtn=document.getElementById("tan");
@@ -9,6 +11,7 @@ let x, y;
 let scale=50;
 let clicked=[];
 let i=0;
+let color=[];
 window.onload=()=>{
     canvas.width=window.innerWidth;
     canvas.height=window.innerHeight;
@@ -25,10 +28,14 @@ window.onload=()=>{
             clicked[0]=false;
         }
     })
+    colorPicker[0].addEventListener("change",()=>{
+        color[0]=colorPicker[0].value;
+        draw()
+    })
 }
 
 function graph(){
-        draw()
+        draw();
 }
 function draw(){
     let canvy;
@@ -38,7 +45,7 @@ function draw(){
         for(let posx=-canvas.width/2;posx<canvas.width/2;){
 
             ctx.beginPath();
-            ctx.strokeStyle="white";
+            ctx.strokeStyle=color[i];
             ctx.lineCap="butt";
             ctx.lineWidth=2;
     
@@ -66,9 +73,17 @@ function addFunc(){
     const label=document.createElement("label")
     div.appendChild(label)
     label.innerText="f(x) = ";
+
     const inputEle=document.createElement("input");
-    div.appendChild(inputEle)
-    inputEle.classList.add("func")
+    inputEle.setAttribute("type", "text");
+    div.appendChild(inputEle);
+    inputEle.classList.add("func");
+
+    const pickerInput=document.createElement("input");
+    pickerInput.setAttribute("type", "color");
+    div.appendChild(pickerInput);
+    pickerInput.classList.add("color-picker");
+
     i++;
     clicked[i]=false;
     inputEle.addEventListener("click",()=>{
@@ -82,7 +97,12 @@ function addFunc(){
             funcInput[i].style.borderBottom="2px solid blue";
             clicked[i]=false;
         }
-        })
+    })
+    pickerInput.addEventListener("change",()=>{
+        color[i]=pickerInput.value;
+        draw()
+    })
+
 }
 function trig(fn){
     for(let i=0;i<funcInput.length;i++){
@@ -108,8 +128,6 @@ function trig(fn){
                     
             }
         }
-
-
     }
 
 }

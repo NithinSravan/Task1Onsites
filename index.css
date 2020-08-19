@@ -42,6 +42,15 @@ label{
     outline:none;
     cursor: pointer;
 }
+.color-picker{
+    width: 10vw;
+    border:none;
+    margin-left: 5px;
+    outline:none;
+    padding:5px 20px;
+    background-color:rgb(38, 29, 70);
+    border-radius:10px;
+}
 #add-graph{
     background-color: rgb(35, 150, 245);
 }
